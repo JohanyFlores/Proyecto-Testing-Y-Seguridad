@@ -2,10 +2,10 @@ import HttpStatus from 'http-status-codes';
 import jwt from 'jsonwebtoken';
 import { NextFunction, Request, Response } from 'express';
 import { IUserModel, IUserRequest } from '@/components/User/model';
-import HttpError from '@/config/error';
+import { HttpError } from '@/config/error';
 import AuthService from './service';
 import UserService from '@/components/User/service';
-import app from '@/config/server/server';
+import config from '@/config/env/index';
 
 interface RequestWithUser extends Request {
   user: IUserRequest;
@@ -48,7 +48,7 @@ export async function login(req: Request, res: Response, next: NextFunction): Pr
 
     const token: string = jwt.sign(
       { id: userModel._id, email: userModel.email },
-      app.get('secret'),
+      config.secret,
       {
         expiresIn: '60m'
       }

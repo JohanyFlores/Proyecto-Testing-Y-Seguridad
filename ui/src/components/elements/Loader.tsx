@@ -9,7 +9,7 @@ export type LoaderProps = {
 };
 
 const Loader = ({ message }: LoaderProps) => (
-  <LoaderWrapper>
+  <LoaderWrapper data-testid="loader">
     <LoaderCard>
       <LoaderImg src={icnLoader} alt={message} />
       <LoaderMsg>{message}</LoaderMsg>

@@ -49,7 +49,7 @@ const Dashboard = () => {
     return (
       <Wrapper>
         <ContentWrapper>
-          <ErrorMsg>{t('dashboard.error')}</ErrorMsg>
+          <ErrorMsg data-testid="error-message">{t('dashboard.error')}</ErrorMsg>
         </ContentWrapper>
       </Wrapper>
     );
@@ -60,7 +60,7 @@ const Dashboard = () => {
       <ContentWrapper>
         {data && (
           <ResponseWrapper>
-            <AboutMeWrapper>
+            <AboutMeWrapper data-testid="about-me-section">
               {data?.aboutMe && <AboutMeCard aboutMe={data?.aboutMe} />}
             </AboutMeWrapper>
             <ProjectWrapper>

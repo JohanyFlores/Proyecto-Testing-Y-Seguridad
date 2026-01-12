@@ -31,9 +31,13 @@ export async function findOne(req: Request, res: Response, next: NextFunction): 
   try {
     const aboutMe: IProjectsModel = await ProjectsService.findOne(req.params.id);
 
+    if (!aboutMe) {
+      return next(new HttpError(404, `Project with id ${req.params.id} not found`));
+    }
+
     res.status(200).json(aboutMe);
   } catch (error) {
-    next(new HttpError(error.message.status, error.message));
+    next(new HttpError(400, error.message));
   }
 }
 
@@ -50,7 +54,7 @@ export async function create(req: Request, res: Response, next: NextFunction): P
 
     res.status(201).json(aboutMe);
   } catch (error) {
-    next(new HttpError(error.message.status, error.message));
+    res.status(400).json({ message: error.message });
   }
 }
 

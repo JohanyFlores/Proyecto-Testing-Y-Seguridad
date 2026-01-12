@@ -23,7 +23,7 @@ const Admin = () => {
   const navigate = useNavigate();
   const apiClient = useMemo(() => createApiClient(), []);
   const { createOrUpdate, status, error } = useCreateOrUpdate(apiClient.createOrUpdateProject);
-  const { project, removeProject } = useProject();
+  const { currentProject: project, clearCurrentProject: removeProject } = useProject();
 
   const [projectInput, setProjectInput] = useState<Partial<Project>>(project || emptyProjectInput);
 

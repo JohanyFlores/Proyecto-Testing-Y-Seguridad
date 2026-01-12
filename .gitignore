@@ -8,3 +8,10 @@
 .env.production.local
 
 exports/
+
+node_modules/
+dist/
+coverage/
+.env
+.vscode/
+
